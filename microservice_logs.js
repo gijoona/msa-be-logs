@@ -16,7 +16,7 @@ const elasticsearch = new require('elasticsearch').Client({ // elasticsearch 인
   MicroService Architecture : Logs
   developer - ijgong
   date - 20180912
-  target git - msa_be_logs:develop100
+  target git - msa_be_logs:develop
 */
 class logs extends require('./server.js') {
   constructor () {
