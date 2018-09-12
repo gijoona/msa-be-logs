@@ -11,6 +11,13 @@ const elasticsearch = new require('elasticsearch').Client({ // elasticsearch 인
   log: 'trace'
 });
 
+/**
+  Logs 클래스
+  MicroService Architecture : Logs
+  developer - ijgong
+  date - 20180912
+  target git - msa_be_logs:develop
+*/
 class logs extends require('./server.js') {
   constructor () {
     super('logs'  // POST/logs 한 가지 기능만 가지도록 함
