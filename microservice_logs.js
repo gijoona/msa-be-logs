@@ -25,7 +25,7 @@ class logs extends require('./server.js') {
       , ["POST/logs"]
     );
 
-    // writestream 생성
+    // writestream 생성 
     // this.writestream = fs.createWriteStream('./log.txt', { flags: 'a' });
 
     this.connectToDistributor(serverIp, 9000, (data) => {
