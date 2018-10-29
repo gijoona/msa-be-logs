@@ -1,12 +1,13 @@
 'use strict';
 
-const serverIp = '35.200.103.250';
 const cluster = require('cluster'); // cluster 모듈
+const conf = require('./conf/config').setting;
+// const serverIp = '35.200.103.250';
 // const fs = require('fs');
 const elasticsearch = new require('elasticsearch').Client({ // elasticsearch 인스턴스 생성
   host: {
-    host: serverIp,
-    port: 9200
+    host: conf.elastic.ip,
+    port: conf.elastic.port
   },
   log: 'trace'
 });
@@ -21,14 +22,14 @@ const elasticsearch = new require('elasticsearch').Client({ // elasticsearch 인
 class logs extends require('./server.js') {
   constructor () {
     super('logs'  // POST/logs 한 가지 기능만 가지도록 함
-      , process.argv[2] ? Number(process.argv[2]) : 9040
+      , process.argv[2] ? Number(process.argv[2]) : conf.service.port
       , ["POST/logs"]
     );
 
-    // writestream 생성 
+    // writestream 생성
     // this.writestream = fs.createWriteStream('./log.txt', { flags: 'a' });
 
-    this.connectToDistributor(serverIp, 9000, (data) => {
+    this.connectToDistributor(conf.distribute.ip, conf.distribute.port, (data) => {
       console.log("Distributor Notification", data);
     });
   }

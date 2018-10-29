@@ -9,7 +9,7 @@ const distribute = Object.assign(
 const service = Object.assign(
   {},
   defaults,
-  { "port": 9070 });
+  { "port": 9040 });
 const redis = Object.assign(
   {},
   defaults,
@@ -24,12 +24,20 @@ const database = Object.assign(
     "password": "",
     "schima": "monolithic"
   });
+const elastic = Object.assign(
+  {},
+  defaults,
+  {
+    "port": 9200
+  }
+);
 
 const setting = {
   "service": service,
   "distribute": distribute,
   "redis": redis,
-  "database": database
+  "database": database,
+  "elastic": elastic
 };
 
 exports.setting = setting;
